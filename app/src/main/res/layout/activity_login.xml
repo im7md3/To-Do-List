@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#542ACC">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="45dp"
+            android:lineHeight="28sp"
+            android:text="Welcome back!"
+            android:textColor="#FFFF"
+            android:textSize="27sp" />
+
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="15dp"
+            android:background="#6C49D1"
+            android:hint="Your Email Address"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="20dp"
+            android:textColor="#FFFF"
+            android:textColorHint="#FFFF" />
+
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="60dp"
+            android:background="#6C49D1"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            android:textColor="#FFFF"
+            android:textColorHint="#FFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="30dp"
+            android:text="Forgot your password?"
+            android:textColor="#FFFF" />
+
+        <Button
+            android:layout_width="360dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/button"
+            android:lineHeight="20sp"
+            android:text="Log in"
+            android:textAllCaps="false"
+            android:textColor="#FFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="160dp"
+            android:lineHeight="17sp"
+            android:text="Don’t have an account?"
+            android:textColor="#66FFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textview_createPro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create your profile"
+            android:textColor="#FFFF"
+            android:layout_marginBottom="25dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+</ScrollView>
