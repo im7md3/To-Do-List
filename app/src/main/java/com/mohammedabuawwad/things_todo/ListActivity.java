@@ -55,7 +55,9 @@ public class ListActivity extends AppCompatActivity {
                         if (!editText_listName.getText().toString().isEmpty()) {
                             Item item = new Item();
                             item.setNameOfList(editText_listName.getText().toString());
-                            itemList.add(item);
+                            itemList.add(0,item);
+                            recyclerViewAdapter.notifyItemInserted(0);
+                            recyclerView.smoothScrollToPosition(0);
                             recyclerViewAdapter.notifyDataSetChanged();
                             dialog.dismiss();
                         } else {
