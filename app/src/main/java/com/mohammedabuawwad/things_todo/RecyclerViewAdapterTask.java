@@ -1,6 +1,7 @@
 package com.mohammedabuawwad.things_todo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +69,18 @@ public class RecyclerViewAdapterTask extends RecyclerView.Adapter<RecyclerViewAd
             context = ctx;
 
             checkBox = itemView.findViewById(R.id.checkBox);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    Task task = taskList.get(position);
+                    Intent intent = new Intent(context, ViewTaskActivity.class);
+                    intent.putExtra("taskName", task.getTaskName());
+
+                    context.startActivity(intent);
+                }
+            });
 
         }
 
