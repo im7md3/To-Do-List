@@ -18,6 +18,7 @@
         android:layout_marginTop="10dp">
 
         <TextView
+            android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -36,6 +37,7 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/back_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -45,7 +47,7 @@
     </RelativeLayout>
 
 
-    <androidx.appcompat.widget.SearchView
+    <SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,6 +55,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="#6C49D1"
+        android:searchIcon="@drawable/ic_baseline_search_24"
         />
 
     <TextView

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "261665272425",
+    "project_id": "things-todo-9af2e",
+    "storage_bucket": "things-todo-9af2e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261665272425:android:05f7bd784e33b829d428f8",
+        "android_client_info": {
+          "package_name": "com.mohammedabuawwad.things_todo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "261665272425-eoitf22u6b8kf880horc8kq51db3lj9p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjYTCKB3idrDatuoboIxfmXNrfZ6MqUWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "261665272425-eoitf22u6b8kf880horc8kq51db3lj9p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

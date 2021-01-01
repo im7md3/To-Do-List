@@ -1,15 +1,38 @@
 package com.mohammedabuawwad.things_todo;
 
+
 public class Task {
     private String taskName;
     private Boolean isChecked;
+    private String taskId;
+    private String listId;
+    private String timeAdded;
 
     public Task() {
     }
 
-    public Task(String taskName, Boolean isChecked) {
-        this.taskName = taskName;
-        this.isChecked = isChecked;
+    public String getTimeAdded() {
+        return timeAdded;
+    }
+
+    public void setTimeAdded(String timeAdded) {
+        this.timeAdded = timeAdded;
+    }
+
+    public String getListId() {
+        return listId;
+    }
+
+    public void setListId(String listId) {
+        this.listId = listId;
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
     }
 
     public String getTaskName() {

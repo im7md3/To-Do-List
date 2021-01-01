@@ -5,36 +5,45 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.Adapter;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+
+
+public class RecyclerViewAdapter extends Adapter<RecyclerViewAdapter.ViewHolder> implements Filterable {
 
     private Context context;
     private List<Item> itemList;
+    private List<Item> forSearchList;
 
     public RecyclerViewAdapter(Context context, List<Item> itemList) {
         this.context = context;
         this.itemList = itemList;
-
+        forSearchList = new ArrayList<>(itemList);
     }
 
     @NonNull
     @Override
-    public RecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row, parent, false);
+    public RecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.item_row, viewGroup, false);
 
         return new ViewHolder(view, context);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder viewHolder, int position) {
         Item item = itemList.get(position);
-        holder.nameOfList.setText(item.getNameOfList());
+        viewHolder.itemListName.setText(item.getListName());
     }
 
     @Override
@@ -42,14 +51,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return itemList.size();
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView nameOfList;
+        public TextView itemListName;
 
-        public ViewHolder(@NonNull View itemView, Context c) {
+        public ViewHolder(@NonNull View itemView, Context ctx) {
             super(itemView);
-            context = c;
+            context = ctx;
 
-            nameOfList = itemView.findViewById(R.id.nameOfList);
+            itemListName = itemView.findViewById(R.id.nameOfList);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -57,11 +67,51 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     int position = getAdapterPosition();
                     Item item = itemList.get(position);
                     Intent intent = new Intent(context, TaskActivity.class);
-                    intent.putExtra("listName", item.getNameOfList());
+                    intent.putExtra("listName", item.getListName());
+                    intent.putExtra("listId",item.getListId());
 
                     context.startActivity(intent);
                 }
             });
+
         }
+
+
     }
+
+    @Override
+    public Filter getFilter() {
+        return itemSearch;
+    }
+
+    private Filter itemSearch = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Item> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0){
+                filteredList.addAll(forSearchList);
+            }else{
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (Item item : forSearchList){
+                    if (item.getListName().toLowerCase().contains(filterPattern)){
+                        filteredList.add(item);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            itemList.clear();
+            itemList.addAll((List)results.values);
+            notifyDataSetChanged();
+        }
+    };
 }
